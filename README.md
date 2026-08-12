@@ -47,7 +47,7 @@ usual cause of instant native crashes on legacy Windows).
 
 ### 1. Ruling out missing imports
 
-Both `jvm_client.dll` and `jvm_server.dll` were inspected with `pefile`.
+Both `jvm.dll` (Client Version) and `jvm.dll` (Server Version) were inspected with `pefile`.
 Their import tables only reference standard Win32 DLLs:
 
 ```
