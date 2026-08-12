@@ -92,7 +92,7 @@ generated at runtime (`VM_Version_StubGenerator`) to probe CPU
 features via `CPUID`. This matched the symptom exactly: an instant
 crash, before any bytecode-level activity was possible.
 
-Disassembling `jvm_client.dll` (via `pefile` + `capstone`) for the
+Disassembling `jvm.dll` (Client Version, via `pefile` + `capstone`) for the
 byte-emission pattern HotSpot's assembler uses
 (`emit_int8(0x0F); emit_int8(0xA2);`) found exactly **one** match in
 the whole `.text` section:
@@ -112,7 +112,7 @@ This is `MacroAssembler::cpuid()` — the function whose entire job is
 to write the two bytes `0F A2` (the `CPUID` opcode) into a
 dynamically-generated code buffer.
 
-> **Note on `jvm_server.dll`:** the same search pattern found **no
+> **Note on `jvm.dll` (Server Version):** the same search pattern found **no
 > match** in the server (C2) compiler's build. The server compiler
 > appears to inline opcode emission differently than the client (C1)
 > compiler, so this exact heuristic doesn't locate the equivalent
@@ -145,7 +145,7 @@ byte are identical to the original.
 ```python
 #!/usr/bin/env python3
 """
-Patch: strip the CPUID instruction from HotSpot 1.5.0-b64 jvm_client.dll
+Patch: strip the CPUID instruction from HotSpot 1.5.0-b64 jvm.dll (Client Version)
 so it runs under Wx86CPU.DLL (SoftWindows32 / Windows NT for PowerPC,
 e.g. Nintendo Wii).
 
