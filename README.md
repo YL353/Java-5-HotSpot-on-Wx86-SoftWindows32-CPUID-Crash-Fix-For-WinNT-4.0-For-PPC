@@ -16,7 +16,7 @@ every launch attempt — and the binary patch that fixes it.
 `javaw.exe` immediately.
 
 The fix: NOP out the 2 bytes that make up the `CPUID` opcode (`0F A2`)
-inside `jvm_client.dll`, at fixed file offsets `0x8091` / `0x8098`
+inside `jvm.dll` (Client Version), at fixed file offsets `0x8091` / `0x8098`
 (specific to this exact `1.5.0-b64` build). After patching, the VM
 boots, JITs, and runs real bytecode — confirmed by reaching the
 Minecraft Beta 1.7.3 main menu on real Wii hardware.
