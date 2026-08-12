@@ -278,6 +278,8 @@ This is still being investigated.
 
 ---
 
+![Minecraft Beta 1.7.3 main menu running on Windows NT 4.0 PowerPC under SoftWindows32, on a Nintendo Wii](MC_JavaEdition_Wii_WinNT_PPC_Test.jpg)
+
 ## Credits
 
 Investigation and patch by [YLucas35](https://github.com/YL353) — reverse
